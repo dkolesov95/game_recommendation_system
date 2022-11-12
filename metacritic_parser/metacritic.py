@@ -10,11 +10,12 @@ class Parser:
         self.session = HTMLSession()
 
     def get_data_from_page(self, pagination_num) -> Union[Tuple[Response, list[tuple]], Tuple[None, None]]:
-        url = f'https://www.metacritic.com/browse/games/score/metascore/year/all/filtered?year_selected={self.year}&distribution=&sort=desc&view=detailed&page={pagination_num}'
-        request = self.session.get(url)
+        url = 'https://www.metacritic.com/browse/games/score/metascore/year/all/filtered?year_selected=' \
+                f'{self.year}&distribution=&sort=desc&view=detailed&page={pagination_num}'
 
+        request = self.session.get(url)
         if request.status_code != 200:
-            print(f'get_pagination_count_pages error, status code {request.status_code}')
+            print(f'get_pagination_count_pages error, code {request.status_code}, year {self.year}, {pagination_num}')
             return None, None
 
         games_data = []
@@ -38,7 +39,7 @@ class Parser:
         href = game_card.find('a', first=True).attrs['href']
         return title, platform, date, summary, metascore, userscore, href
 
-    # @staticmethod
-    # def get_pagination_count_pages(request: Response) -> Union[int, None]:
-    #     last_page = request.html.find('.last_page', first=True)
-    #     return int(last_page.find('.page_num', first=True).text) if last_page else None
+    @staticmethod
+    def get_pagination_count_pages(request: Response) -> Union[int, None]:
+        last_page = request.html.find('.last_page', first=True)
+        return int(last_page.find('.page_num', first=True).text) if last_page else None
