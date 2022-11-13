@@ -30,16 +30,17 @@ class Parser:
 
     @staticmethod
     def collect_game_data(game_card: Response) -> tuple:
-        title = game_card.find('h3', first=True).text
+        title = game_card.find('h3', first=True).text.replace("'", " ")
         platform = game_card.find('.platform', first=True).find('.data', first=True).text
         date = game_card.find('.clamp-details', first=True).find('span')[-1].text
-        summary = game_card.find('.summary', first=True).text
+        summary = game_card.find('.summary', first=True).text.replace("'", " ")
         metascore = game_card.find('.clamp-metascore', first=True).find('.metascore_w', first=True).text
         userscore = game_card.find('.clamp-userscore', first=True).find('.metascore_w', first=True).text
         href = game_card.find('a', first=True).attrs['href']
+
         return title, platform, date, summary, metascore, userscore, href
 
     @staticmethod
     def get_pagination_count_pages(request: Response) -> Union[int, None]:
         last_page = request.html.find('.last_page', first=True)
-        return int(last_page.find('.page_num', first=True).text) if last_page else None
+        return int(last_page.find('.page_num', first=True).text) if last_page else 0
