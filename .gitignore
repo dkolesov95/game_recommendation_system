@@ -1,5 +1,6 @@
 /venv
 /.idea
 /metacritic_parser/__pycache__/
+.ipynb_checkpoints/
 /cosine_similarity.pkl
 /unique_game_cards.csv

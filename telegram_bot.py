@@ -5,10 +5,10 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 TOKEN = 'YOUR TOKEN'
 
-with open('cosine_similarity.pkl', 'rb') as f:
+with open('./cosine_similarity.pkl', 'rb') as f:
     cosine_similarity = pd.read_pickle(f)
 
-with open('unique_game_cards.csv') as f:
+with open('./unique_game_cards.csv') as f:
     unique_game_cards = pd.read_csv(f, encoding='unicode_escape')
 
 
