@@ -1,4 +1,4 @@
-# Game Recommender System
+# Game Recommendation System
 
 ## ОПИСАНИЕ
 
@@ -27,4 +27,4 @@
 \
 Итого, у меня есть 3 оценки, которые нужно превратить в одну. Для решение этой задачи я использовал среднее гармоническое, предварительно нормализовав оценки критиков и игроко.
 
-##### Попробовать можно в телеграм боте [@game_recommender_system_bot](https://t.me/game_recommender_system_bot) (если не работает напишите мне [@dkolesov95](https://t.me/dkolesov95)).
+##### Попробовать можно в [телеграм боте](https://t.me/need_game_bot).
