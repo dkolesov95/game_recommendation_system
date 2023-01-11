@@ -14,7 +14,7 @@ with open('./unique_game_cards.csv') as f:
 
 def start(update, context):
     update.message.reply_text('Hi! This bot can recommend games to you based on your ' \
-                              'preferences. Send me the name of the game and see what you get.')
+                              'preferences. Send me the name and see what you get.')
 
 
 def check_name(text):
@@ -43,7 +43,7 @@ def harmonic_mean(dataframe):
 
 def generate_message(game_name, recomendation_df):
     message = f"Do you mean <b>{game_name}</b>? If not, I recommend copying the " \
-              f"name of the game from <a href='https://metacritic.com'>Metacritic</a>.\n\n"
+              f"name from <a href='https://metacritic.com'>Metacritic</a>.\n\n"
     for index, (_, row) in enumerate(recomendation_df.iterrows()):
         har_mean = round(row['harmonic_mean'], 4)
         message += f"{index + 1}. <a href='https://metacritic.com{row['href']}'>{row['name']}</a> ({har_mean})\n"
